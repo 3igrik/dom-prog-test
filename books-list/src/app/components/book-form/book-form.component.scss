@@ -1,0 +1,25 @@
+.form-container {
+  display: flex;
+  flex-flow: column;
+
+  &__field {
+    margin-bottom: 20px;
+  }
+
+  &__input {
+    width: 100%;
+  }
+}
+
+.required {
+  color: red;
+}
+
+.label {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.p-error {
+  margin-top: 2px;
+}

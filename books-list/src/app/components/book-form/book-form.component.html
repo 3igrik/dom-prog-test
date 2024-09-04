@@ -1,0 +1,42 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="form-container">
+    <div class="form-container__field">
+      <label class="label" [for]="BookFormControlName.TITLE">Title <span class="required">*</span></label>
+      <input class="form-container__input" [id]="BookFormControlName.TITLE" pInputText [formControlName]="BookFormControlName.TITLE" />
+      <div *ngIf="form.get(BookFormControlName.TITLE)?.hasError('required')" class="p-error">
+        Title is required.
+      </div>
+    </div>
+    <div class="form-container__field">
+      <label class="label" [for]="BookFormControlName.AUTHOR">Author <span class="required">*</span></label>
+      <input class="form-container__input" [id]="BookFormControlName.AUTHOR" pInputText [formControlName]="BookFormControlName.AUTHOR" />
+      <div *ngIf="form.get(BookFormControlName.AUTHOR)?.hasError('required')" class="p-error ">
+        Author is required.
+      </div>
+    </div>
+    <div class="form-container__field">
+      <label class="label" [for]="BookFormControlName.YEAR">Year <span class="required">*</span></label>
+      <input class="form-container__input" [id]="BookFormControlName.YEAR" pInputText [formControlName]="BookFormControlName.YEAR" type="number" />
+      <div *ngIf="form.get(BookFormControlName.YEAR)?.hasError('required')" class="p-error ">
+        Year is required.
+      </div>
+      <div *ngIf="form.get(BookFormControlName.YEAR)?.hasError('min')" class="p-error ">
+        Year must be at least 1.
+      </div>
+      <div *ngIf="form.get(BookFormControlName.YEAR)?.hasError('max')" class="p-error ">
+        Year cannot be in the future.
+      </div>
+    </div>
+    <div class="form-container__field">
+      <label class="label" [for]="BookFormControlName.PAGES">Pages <span class="required">*</span></label>
+      <input class="form-container__input" [id]="BookFormControlName.PAGES" pInputText [formControlName]="BookFormControlName.PAGES" type="number" />
+      <div *ngIf="form.get(BookFormControlName.PAGES)?.hasError('required')" class="p-error ">
+        Pages are required.
+      </div>
+      <div *ngIf="form.get(BookFormControlName.PAGES)?.hasError('min')" class="p-error ">
+        Pages must be at least 1.
+      </div>
+    </div>
+  </div>
+  <button pButton [disabled]="!form.valid" label="Save" class="p-button-success p-ml-2" type="submit"></button>
+</form>
